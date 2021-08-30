@@ -102,7 +102,7 @@
                         <revremark>${revremark}</revremark>
                         <imagesdir>images</imagesdir>
                         <source-highlighter>coderay</source-highlighter>
-                        <specref-base-url>https://github.com/eclipse-ee4j/cdi-tck/tree/master/</specref-base-url>
+                        <specref-base-url>https://github.com/Ladicek/cdi-tck/tree/specref/</specref-base-url>
                     </attributes>
                 </configuration>
             </plugin>
