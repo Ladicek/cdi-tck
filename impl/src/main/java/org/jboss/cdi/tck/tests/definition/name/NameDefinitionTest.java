@@ -35,6 +35,8 @@ import jakarta.enterprise.inject.spi.Bean;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.Concepts;
+import org.jboss.cdi.tck.ConceptsID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -53,6 +55,7 @@ public class NameDefinitionTest extends AbstractTest {
     @Test
     @SpecAssertions({ @SpecAssertion(section = DECLARING_BEAN_NAME, id = "a"), @SpecAssertion(section = CONCEPTS, id = "e"),
             @SpecAssertion(section = DECLARING_MANAGED_BEAN, id = "bb") })
+    @Concepts(ConceptsID.E)
     public void testNonDefaultNamed() {
         Bean<Moose> moose = getUniqueBean(Moose.class);
         assertEquals(moose.getName(), "aMoose");
@@ -78,6 +81,7 @@ public class NameDefinitionTest extends AbstractTest {
 
     @Test
     @SpecAssertions({ @SpecAssertion(section = BEANS_WITH_NO_NAME, id = "a"), @SpecAssertion(section = CONCEPTS, id = "e") })
+    @Concepts(ConceptsID.E)
     public void testNamedNotDeclaredByBean() {
         Bean<SeaBass> bean = getUniqueBean(SeaBass.class);
         assertNull(bean.getName());

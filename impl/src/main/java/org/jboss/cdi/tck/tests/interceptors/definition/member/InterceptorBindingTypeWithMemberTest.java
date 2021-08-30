@@ -24,6 +24,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.Concepts;
+import org.jboss.cdi.tck.ConceptsID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.impl.BeansXml;
@@ -50,6 +52,7 @@ public class InterceptorBindingTypeWithMemberTest extends AbstractTest {
 
     @Test
     @SpecAssertion(section = CONCEPTS, id = "f")
+    @Concepts(ConceptsID.F)
     public void testInterceptorBindingTypeWithMember() {
         Farm farm = getContextualReference(Farm.class);
         assertEquals(farm.getAnimalCount(), 20);

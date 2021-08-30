@@ -54,6 +54,10 @@ import jakarta.enterprise.util.AnnotationLiteral;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.Concepts;
+import org.jboss.cdi.tck.ConceptsID;
+import org.jboss.cdi.tck.LegalBeanTypes;
+import org.jboss.cdi.tck.LegalBeanTypesID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.cdi.tck.util.DependentInstance;
 import org.jboss.cdi.tck.util.MockCreationalContext;
@@ -162,6 +166,8 @@ public class SimpleBeanLifecycleTest extends AbstractTest {
     @Test
     @SpecAssertions({ @SpecAssertion(section = CONCEPTS, id = "g"), @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "b"),
             @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "k"), @SpecAssertion(section = INITIALIZATION, id = "ja") })
+    @Concepts(ConceptsID.G)
+    @LegalBeanTypes({LegalBeanTypesID.B, LegalBeanTypesID.K})
     public void testManagedBean() {
         assert getBeans(RedSnapper.class).size() == 1;
         assert getContextualReference(RedSnapper.class) instanceof RedSnapper;

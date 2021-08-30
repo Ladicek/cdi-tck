@@ -53,6 +53,8 @@ import jakarta.enterprise.util.TypeLiteral;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.LegalBeanTypes;
+import org.jboss.cdi.tck.LegalBeanTypesID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.cdi.tck.util.Assert;
 import org.jboss.cdi.tck.util.DependentInstance;
@@ -176,6 +178,7 @@ public class ProducerMethodDefinitionTest extends AbstractTest {
 
     @Test
     @SpecAssertions({ @SpecAssertion(section = PRODUCER_METHOD_TYPES, id = "bb"), @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "i") })
+    @LegalBeanTypes(LegalBeanTypesID.I)
     public void testApiTypeForArrayTypeReturn() throws Exception {
         assertEquals(getBeans(Spider[].class).size(), 1);
         Bean<Spider[]> spiders = getBeans(Spider[].class).iterator().next();

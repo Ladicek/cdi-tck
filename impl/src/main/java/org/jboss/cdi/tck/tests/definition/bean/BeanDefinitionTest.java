@@ -37,6 +37,10 @@ import jakarta.enterprise.inject.spi.Bean;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.Concepts;
+import org.jboss.cdi.tck.ConceptsID;
+import org.jboss.cdi.tck.LegalBeanTypes;
+import org.jboss.cdi.tck.LegalBeanTypesID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -60,6 +64,7 @@ public class BeanDefinitionTest extends AbstractTest {
 
     @Test
     @SpecAssertion(section = CONCEPTS, id = "a")
+    @Concepts(ConceptsID.A)
     public void testBeanTypesNonEmpty() {
         assertEquals(getBeans(RedSnapper.class).size(), 1);
         assertFalse(getBeans(RedSnapper.class).iterator().next().getTypes().isEmpty());
@@ -67,6 +72,7 @@ public class BeanDefinitionTest extends AbstractTest {
 
     @Test
     @SpecAssertions({ @SpecAssertion(section = CONCEPTS, id = "b"), @SpecAssertion(section = BEAN, id = "ba") })
+    @Concepts(ConceptsID.B)
     public void testQualifiersNonEmpty() {
         assertEquals(getBeans(RedSnapper.class).size(), 1);
         assertFalse(getBeans(RedSnapper.class).iterator().next().getQualifiers().isEmpty());
@@ -75,6 +81,7 @@ public class BeanDefinitionTest extends AbstractTest {
     @Test
     @SpecAssertions({ @SpecAssertion(section = CONCEPTS, id = "c"), @SpecAssertion(section = SCOPES, id = "a"),
             @SpecAssertion(section = DECLARING_MANAGED_BEAN, id = "ba"), @SpecAssertion(section = BEAN, id = "ba") })
+    @Concepts(ConceptsID.C)
     public void testHasScopeType() {
         assertEquals(getBeans(RedSnapper.class).size(), 1);
         assertEquals(getBeans(RedSnapper.class).iterator().next().getScope(), RequestScoped.class);
@@ -85,6 +92,7 @@ public class BeanDefinitionTest extends AbstractTest {
             @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "a"), @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "d"),
             @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "e"), @SpecAssertion(section = BEAN_TYPES, id = "l"),
             @SpecAssertion(section = BEAN, id = "ba") })
+    @LegalBeanTypes({LegalBeanTypesID.A, LegalBeanTypesID.D, LegalBeanTypesID.E})
     public void testBeanTypes() {
         assert getBeans(Tarantula.class).size() == 1;
         Bean<Tarantula> bean = getBeans(Tarantula.class).iterator().next();
@@ -151,6 +159,7 @@ public class BeanDefinitionTest extends AbstractTest {
 
     @Test
     @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "c")
+    @LegalBeanTypes(LegalBeanTypesID.C)
     public void testAbstractApiType() {
         Set<Bean<FriendlyAntelope>> beans = getBeans(FriendlyAntelope.class);
         assertEquals(beans.size(), 1);
@@ -164,6 +173,7 @@ public class BeanDefinitionTest extends AbstractTest {
 
     @Test
     @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "d")
+    @LegalBeanTypes(LegalBeanTypesID.D)
     public void testFinalApiType() {
         assertFalse(getBeans(DependentFinalTuna.class).isEmpty());
     }

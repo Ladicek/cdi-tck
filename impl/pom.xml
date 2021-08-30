@@ -20,6 +20,11 @@
 
         <dependency>
             <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-spec-doc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
             <artifactId>cdi-tck-api</artifactId>
         </dependency>
 
@@ -53,6 +58,10 @@
             <artifactId>jboss-test-audit-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.smallrye</groupId>
+            <artifactId>specref-annotation-processor</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>jakarta.interceptor</groupId>

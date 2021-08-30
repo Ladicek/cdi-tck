@@ -38,6 +38,8 @@ import jakarta.enterprise.util.AnnotationLiteral;
 import jakarta.enterprise.util.TypeLiteral;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.LegalBeanTypes;
+import org.jboss.cdi.tck.LegalBeanTypesID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -111,6 +113,7 @@ public class ResolutionByTypeTest extends AbstractTest {
 
     @Test
     @SpecAssertions({ @SpecAssertion(section = PERFORMING_TYPESAFE_RESOLUTION, id = "j"), @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "i") })
+    @LegalBeanTypes(LegalBeanTypesID.I)
     public void testResolveByTypeWithArray() throws Exception {
         assertEquals(getBeans(Spider[].class).size(), 1);
     }
@@ -119,6 +122,7 @@ public class ResolutionByTypeTest extends AbstractTest {
     @SpecAssertions({ @SpecAssertion(section = PERFORMING_TYPESAFE_RESOLUTION, id = "i"), @SpecAssertion(section = PRIMITIVE_TYPES_AND_NULL_VALUES, id = "aa"),
             @SpecAssertion(section = PRIMITIVE_TYPES_AND_NULL_VALUES, id = "ab"), @SpecAssertion(section = MULTIPLE_QUALIFIERS, id = "b"),
             @SpecAssertion(section = MULTIPLE_QUALIFIERS, id = "c"), @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "j") })
+    @LegalBeanTypes(LegalBeanTypesID.J)
     public void testResolveByTypeWithPrimitives() {
 
         assertEquals(getBeans(Double.class, NUMBER).size(), 2);

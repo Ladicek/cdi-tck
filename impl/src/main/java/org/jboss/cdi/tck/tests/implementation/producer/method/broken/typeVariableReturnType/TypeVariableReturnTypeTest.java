@@ -24,6 +24,8 @@ import jakarta.enterprise.inject.spi.DefinitionException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.ShouldThrowException;
 import org.jboss.cdi.tck.AbstractTest;
+import org.jboss.cdi.tck.LegalBeanTypes;
+import org.jboss.cdi.tck.LegalBeanTypesID;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -42,6 +44,7 @@ public class TypeVariableReturnTypeTest extends AbstractTest {
 
     @Test
     @SpecAssertions({ @SpecAssertion(section = PRODUCER_METHOD, id = "ib"), @SpecAssertion(section = LEGAL_BEAN_TYPES, id = "la") })
+    @LegalBeanTypes(LegalBeanTypesID.LA)
     public void testTypeVariableNotAllowed() {
     }
 

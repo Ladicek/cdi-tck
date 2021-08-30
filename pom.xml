@@ -88,6 +88,7 @@
     </licenses>
 
     <modules>
+        <module>annotated-spec</module>
         <module>api</module>
         <module>ext-lib</module>
         <module>impl</module>
@@ -95,14 +96,22 @@
     </modules>
 
     <properties>
-        <!-- CDI API -->
-        <cdi.api.version>4.0.0.Alpha1</cdi.api.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.release>11</maven.compiler.release>
+
+        <!-- CDI API -->
+        <cdi.api.version>4.0.0-SNAPSHOT</cdi.api.version>
         <!-- Jakarta EE APIs Core -->
         <annotations.api.version>2.0.0</annotations.api.version>
         <interceptors.api.version>2.0.0</interceptors.api.version>
         <atinject.api.version>2.0.0</atinject.api.version>
         <el.api.version>4.0.0</el.api.version>
+
+        <!-- SpecRef -->
+        <specref.version>1.0.0-SNAPSHOT</specref.version>
+        <asciidoctor-maven.version>2.2.1</asciidoctor-maven.version>
+        <asciidoctorj.version>2.5.2</asciidoctorj.version>
 
         <!-- Test tools/dependencies -->
         <testng.version>7.4.0</testng.version>
@@ -139,6 +148,12 @@
             </dependency>
 
             <dependency>
+                <groupId>jakarta.enterprise</groupId>
+                <artifactId>jakarta.enterprise.cdi-spec-doc</artifactId>
+                <version>${cdi.api.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>jakarta.interceptor</groupId>
                 <artifactId>jakarta.interceptor-api</artifactId>
                 <version>${interceptors.api.version}</version>
@@ -166,6 +181,12 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.smallrye</groupId>
+                <artifactId>specref-annotation-processor</artifactId>
+                <version>${specref.version}</version>
             </dependency>
 
             <dependency>
